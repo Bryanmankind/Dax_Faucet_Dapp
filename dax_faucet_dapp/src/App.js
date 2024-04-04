@@ -64,17 +64,16 @@ function App() {
         <button  onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
       </header>
     </div>
-    <div>
-      <body>
-        <h1>BriTech Faucet Dapp</h1>
-        <p> Get 5 OCT/day </p>
+    <div className="faucetBody">
+      <div className="getFaucet">
+      <h1>BriTech Faucet Dapp</h1>
+       <p>Get 5 OCT/day</p>
 
-        <input placeHolder="Your Address" type="text"/>
-        <button> GET TOKENS </button>
+       <input placeholder="Your Address" type="text"/>
+       <button>GET TOKENS</button>
 
         <h2>TRANSACTION DATA</h2>
-
-      </body>
+      </div>
     </div>
     </>
   );

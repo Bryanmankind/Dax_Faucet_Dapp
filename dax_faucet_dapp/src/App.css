@@ -34,5 +34,13 @@ button:hover {
   border-color: #2980b9;
 }
 
+.faucetBody {
+  background-color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 87vh;
+}
+
 
 
