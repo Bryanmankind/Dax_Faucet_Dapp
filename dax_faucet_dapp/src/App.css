@@ -44,6 +44,7 @@ button:hover {
 }
 
 .faucetApp{
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: column; 
@@ -54,17 +55,25 @@ button:hover {
   justify-content: center;
 }
 
-
-
 .faucetApp h1 { 
   font-weight: bold;
   font-family: sans-serif;
   font-size: 50px;
+  margin-top: 8px;
 }
 
 .faucetApp p { 
   font-size: 20px;
+  margin-top: 8px;
+}
 
+.faucetApp h2 { 
+  background-color: black;
+  color: white;
+  width: 600px;
+  border-radius: 2px;
+  align-items: center;
+  
 }
 
 .getFaucet{
