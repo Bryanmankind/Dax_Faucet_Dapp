@@ -1,4 +1,6 @@
+import {ethers} from "ethers";
 import {useState, useEffect} from "react"
+import {faucetContract} from "./Ethereum/faucet"
 
 import './App.css';
 
@@ -14,6 +16,9 @@ function App() {
   const walletConnect = async () => {
     if ( typeof window != "undefined" && typeof window.ethereum != "undefined") {
       try {
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+
       const accounts = await window.ethereum.request({method: "eth_requestAccounts"})
       setWalletAddress(accounts[0])
       console.log(accounts[0])
