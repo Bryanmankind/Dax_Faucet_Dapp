@@ -58,11 +58,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="walletConnect">
       <header className="App-header">
-       <h1>BriTech</h1>
-        <p>Connect Your Wallet</p>
-        <button onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
+        <button  onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
       </header>
     </div>
   );

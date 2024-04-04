@@ -1,25 +1,15 @@
-.App {
+.walletConnect {
   text-align: center;
 }
 
 .App-header {
   background-color: #1a1d23;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: right;
+  justify-content: right;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-header h1 {
-  font-size: 160px;
-  margin: 5px;
-}
-
-.App-header p {
-  font-size: 40px;
+  padding: 10px;
 }
 
 button {
@@ -35,6 +25,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 60px;
 }
 
 button:hover {
@@ -42,4 +33,6 @@ button:hover {
   color: #ffffff;
   border-color: #2980b9;
 }
+
+
 
