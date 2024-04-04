@@ -67,18 +67,25 @@ button:hover {
   margin-top: 8px;
 }
 
-.faucetApp h2 { 
+.Txndata {
+  display: flex;
+  flex-direction: column; 
   background-color: black;
-  color: white;
-  width: 600px;
+  width: 850px;
+  height: 50px;
   border-radius: 2px;
   align-items: center;
-  
+  justify-content: center;
+}
+
+.Txndata h2 { 
+  color: white;
+  font-family: sans-serif;
 }
 
 .getFaucet{
   display: flex;
-  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .getFaucet input {
@@ -88,5 +95,5 @@ button:hover {
 }
 .getFaucet button {
   margin: 10px;
-  margin-left: 50px;
+  margin-left: 20px;
 }
