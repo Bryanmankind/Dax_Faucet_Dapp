@@ -65,12 +65,14 @@ function App() {
       </header>
     </div>
     <div className="faucetBody">
-      <div className="getFaucet">
+      <div className="faucetApp">
       <h1>BriTech Faucet Dapp</h1>
        <p>Get 5 OCT/day</p>
+        <div className="getFaucet"> 
 
-       <input placeholder="Your Address" type="text"/>
-       <button>GET TOKENS</button>
+        <input placeholder="Your Address" type="text"/>
+        <button>GET TOKENS</button>
+        </div>
 
         <h2>TRANSACTION DATA</h2>
       </div>
