@@ -3,6 +3,7 @@ import {useState, useEffect} from "react"
 import './App.css';
 
 function App() {
+  
   const [walletaddress, setWalletAddress] = useState('');
 
   useEffect (() => {
@@ -25,7 +26,6 @@ function App() {
     }
   }
   
-  
   const currentAcct = async () => {
     if ( typeof window != "undefined" && typeof window.ethereum != "undefined") {
       try {
@@ -37,7 +37,7 @@ function App() {
       }else{
         console.log("connect with connect button")
       }
-
+      
       }catch (e){
         console.log(e)
       }
@@ -56,17 +56,24 @@ function App() {
       console.log("Install metamask extention")
     }
   }
-
+  
   return (
     <>
     <div className="walletConnect">
       <header className="App-header">
-        <button  onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
+        <div className="donateBut">
+        <p>Donate some OCT token</p> 
+        <button> Donate </button>
+        </div>
+        <button className="connectBut"  onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
       </header>
     </div>
     <div className="faucetBody">
       <div className="faucetApp">
         <h1>BriTech Faucet Dapp</h1>
+
+        <h2> {} Token Available</h2>
+
 
         <p>Get 5 OCT/day</p>
 
@@ -75,7 +82,7 @@ function App() {
         <input placeholder="Enter your wallet address: " type="text"/>
         <button>GET TOKENS</button>
         </div>
-
+        
         <div className="Txndata">
         <h2>TRANSACTION DATA</h2>
         </div>
