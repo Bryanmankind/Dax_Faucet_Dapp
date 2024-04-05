@@ -1,6 +1,6 @@
-import {ethers} from "ethers";
 import {useState, useEffect} from "react"
-import {faucetContract} from "../Ethereum/faucet"
+import faucetContract from "./Ethereum/faucet"
+import {ethers} from "ethers";
 
 import './App.css';
 
@@ -80,13 +80,18 @@ function App() {
   }
 
   const getOctToken = async () => {
+    setWithDrawSuccess("");
+    setWithDrawError("");
+
     try {
           const fcContractWithSinger = fcContract.connect(signer);
-          const resp = await fcContractWithSinger.withDrawFaucet();
+          const resp = await fcContractWithSinger.withDrawFaucet(); 
           console.log(resp);
-          setWithDrawSuccess("Token sent to your address")
+          setWithDrawSuccess("Token sent to your address");
+          setTxnData(resp.transactionHash)
     }catch (err){
         console.error(err.massage)
+        setWithDrawError(err.message);
     }
   }
   
@@ -109,15 +114,18 @@ function App() {
 
 
         <p>Get 5 OCT/day</p>
-
+        <div className="mt-5">
+          {withDrawError && (<div className="withdraw-error">{withDrawError} </div>)}
+          {withDrawSuccess && (<div className="withdraw-success">{withDrawSuccess} </div>)}
+        </div>
         <div className="getFaucet"> 
 
-        <input placeholder="Enter your wallet address: " type="text"/>
+        <input placeholder="Enter your wallet address: " type="text" defaultValue={walletaddress}/>
         <button onClick={getOctToken}>GET TOKENS</button>
         </div>
-        
+
         <div className="Txndata">
-        <h2>TRANSACTION DATA</h2>
+        <p>{txnData ?`Transaction Data: ${txnData} `: "--"}</p>
         </div>
       </div>
     </div>
