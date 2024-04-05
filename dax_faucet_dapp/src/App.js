@@ -96,9 +96,15 @@ function App() {
   }
 
   const donateToken = async () => {
-    const donateFaucet = fcContract.connect(signer);
-    const donateRespons = await donateFaucet.receive();
     
+    try {
+      const donateFaucet = fcContract.connect(signer);
+      const donateRespons = await donateFaucet.receive();
+      setWithDrawSuccess("Thank you for donating");
+      setTxnData(donateRespons.transactionHash)
+    }catch (err) {
+      setWithDrawError(err.message);
+    }
   }
   
   return (
@@ -107,7 +113,7 @@ function App() {
       <header className="App-header">
         <div className="donateBut">
         <p>Donate some OCT token</p> 
-        <button> Donate </button>
+        <button onClick={donateToken}> Donate </button>
         </div>
         <button className="connectBut"  onClick={walletConnect}>{walletaddress && walletaddress.length > 0 ? `connected ${walletaddress.substring(0,4)}....${walletaddress.substring(38) }` : "Connect Wallet"} </button>
       </header>
