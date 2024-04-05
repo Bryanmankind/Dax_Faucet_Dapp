@@ -94,6 +94,12 @@ function App() {
         setWithDrawError(err.message);
     }
   }
+
+  const donateToken = async () => {
+    const donateFaucet = fcContract.connect(signer);
+    const donateRespons = await donateFaucet.receive();
+    
+  }
   
   return (
     <>
