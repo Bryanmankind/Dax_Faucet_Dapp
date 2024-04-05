@@ -9,6 +9,9 @@ function App() {
   const [walletaddress, setWalletAddress] = useState('');
   const [signer, setSigner] = useState();
   const [fcContract, setFcContract] = useState();
+  const [withDrawError, setWithDrawError] = useState("");
+  const [withDrawSuccess, setWithDrawSuccess] = useState("");
+  const [txnData, setTxnData] = useState("");
 
 
   useEffect (() => {
@@ -78,7 +81,10 @@ function App() {
 
   const getOctToken = async () => {
     try {
-          const fcContractWithSinger = fcContract.connect(signer)
+          const fcContractWithSinger = fcContract.connect(signer);
+          const resp = await fcContractWithSinger.withDrawFaucet();
+          console.log(resp);
+          setWithDrawSuccess("Token sent to your address")
     }catch (err){
         console.error(err.massage)
     }
@@ -107,7 +113,7 @@ function App() {
         <div className="getFaucet"> 
 
         <input placeholder="Enter your wallet address: " type="text"/>
-        <button>GET TOKENS</button>
+        <button onClick={getOctToken}>GET TOKENS</button>
         </div>
         
         <div className="Txndata">
