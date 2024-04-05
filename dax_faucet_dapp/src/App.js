@@ -99,7 +99,7 @@ function App() {
     setWithDrawSuccess("");
     setWithDrawError("");
     try {
-        const providerUrl = 'https://scroll-sepolia-rpc.com';
+        const providerUrl = 'https://sepolia-rpc.scroll.io/';
         const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
         // Assuming `contractAddress` is the address of your smart contract
