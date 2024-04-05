@@ -1,6 +1,6 @@
 import {ethers} from "ethers";
 import {useState, useEffect} from "react"
-import {faucetContract} from "./Ethereum/faucet"
+import {faucetContract} from "../Ethereum/faucet"
 
 import './App.css';
 
@@ -8,6 +8,7 @@ function App() {
   
   const [walletaddress, setWalletAddress] = useState('');
   const [signer, setSigner] = useState();
+  const [fcContract, setFcContract] = useState();
 
 
   useEffect (() => {
@@ -24,6 +25,8 @@ function App() {
         const accounts = await provider.send("eth_requestAccounts", []);
 
         setSigner(provider.getSigner());
+
+        setFcContract(faucetContract(provider));
         
       setWalletAddress(accounts[0])
       console.log(accounts[0])
@@ -39,9 +42,15 @@ function App() {
   const currentAcct = async () => {
     if ( typeof window != "undefined" && typeof window.ethereum != "undefined") {
       try {
-      const accounts = await window.ethereum.request({method: "eth_accounts"})
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        const accounts = await provider.send("eth_accounts", []);
 
       if (accounts.length > 0) {
+        setSigner(provider.getSigner());
+
+        setFcContract(faucetContract(provider));
         setWalletAddress(accounts[0])
         console.log(accounts[0])
       }else{
