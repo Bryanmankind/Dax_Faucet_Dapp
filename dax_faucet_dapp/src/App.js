@@ -75,6 +75,14 @@ function App() {
       console.log("Install metamask extention")
     }
   }
+
+  const getOctToken = async () => {
+    try {
+          const fcContractWithSinger = fcContract.connect(signer)
+    }catch (err){
+        console.error(err.massage)
+    }
+  }
   
   return (
     <>
