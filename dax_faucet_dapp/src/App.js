@@ -96,16 +96,28 @@ function App() {
   }
 
   const donateToken = async () => {
-    
+    setWithDrawSuccess("");
+    setWithDrawError("");
     try {
-      const donateFaucet = fcContract.connect(signer);
-      const donateRespons = await donateFaucet.receive();
-      setWithDrawSuccess("Thank you for donating");
-      setTxnData(donateRespons.transactionHash)
-    }catch (err) {
-      setWithDrawError(err.message);
+        // Assuming `contractAddress` is the address of your smart contract
+        const contractAddress = '0xF1ee102E6f724F908a214c62c7A4F6D0dA0c4346'; // Replace with your contract address
+        
+        // Send Ether to the contract's address
+        const signer = provider.getSigner();
+        const tx = await signer.sendTransaction({
+            to: contractAddress,
+            value: ethers.utils.parseEther("10") // Send 1 Ether as an example
+        });
+        
+        await tx.wait(); // Wait for transaction to be mined
+        
+        setWithDrawSuccess("Thank you for donating");
+        setTxnData(tx.hash); // Set transaction hash for reference
+    } catch (err) {
+        setWithDrawError(err.message);
     }
-  }
+}
+
   
   return (
     <>
